@@ -1,0 +1,35 @@
+[package]
+name = "fretbook"
+version = "0.1.0"
+edition = "2021"
+description = "A desktop app for reading and playing Guitar Pro 3/4 tabs: notation, tab, playback and a live fretboard"
+license = "MIT"
+repository = "https://github.com/olexale/fretbook"
+readme = "README.md"
+keywords = ["guitar", "tablature", "music", "notation", "guitar-pro"]
+categories = ["multimedia::audio", "gui"]
+
+[[bin]]
+name = "fretbook"
+path = "src/main.rs"
+
+[dependencies]
+eframe = { version = "0.37", default-features = false, features = ["default_fonts", "glow", "persistence"] }
+rfd = "0.18"
+cpal = "0.18"
+encoding_rs = "0.8"
+image = { version = "0.25", default-features = false, features = ["png"] }
+serde = { version = "1", features = ["derive"] }
+winit = "0.30"
+rustysynth = "1.3"
+ttf-parser = "0.25"
+miniz_oxide = "0.8"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+muda = "0.21"
+
+[profile.release]
+opt-level = 3
+
+[profile.dev]
+opt-level = 2
